@@ -72,9 +72,11 @@ function showData(){
     <div id="filterContainer">
         <div>
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            <input type="text" id="search" placeholder="Filter"/>
+            <input type="text" id="searchBox" placeholder="Filter"/>
         </div>
     </div>
+
+
 
     <!--Post Office Address Container-->
 
@@ -85,53 +87,52 @@ function showData(){
     
     `
 
+    //Targeting Elements -: 
+
+
     let latitude = document.getElementById('latitude');
     let longitude = document.getElementById('longitude');
     let region = document.getElementById('region');
     let city = document.getElementById('city');
     let org = document.getElementById('org');
     let hostname = document.getElementById('hostname');
-
     // let map = document.getElementById('mapContainer');
-
     let timezone = document.getElementById('timezone');
     let pincode = document.getElementById('pincode'); 
     let datetime = document.getElementById('datetime');
-
     let msg = document.getElementById('msg');
-
     let container = document.getElementById('addressContainer');
 
+    // Navigator Geolocation code -: 
     
-   if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(showPosition)
-   }else{
-        latitude.innerHTML = `Not Supported`
-        longitude.innerHTML = `Not Supported`
-   }
+    if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(showPosition)
+    }else{
+            latitude.innerHTML = `Not Supported`
+            longitude.innerHTML = `Not Supported`
+    }
 
-    // const location = navigator.geolocation.getCurrentPosition(showPosition)
+    // showPosition Getting Latitude and logitude.  
 
     function showPosition(data){
-        console.log(data);
+        // console.log(data);
+        // let latcoord = data.coords.latitude
+        // let lngcoord = data.coords.longitude
         
         latitude.innerHTML = `${data.coords.latitude}`
         longitude.innerHTML = `${data.coords.longitude}`
 
-        // let latcoord = data.coords.latitude
-        // let lngcoord = data.coords.longitude
-
     }
 
-    
+    // Code For getting User IP Address -: 
 
-    // const urlip = `https://api6.ipify.org/?format=json`;
-    const urlip = `https://api.ipify.org?format=json`;
+    // const urlip = `https://api6.ipify.org/?format=json`; // Getting IPV6 address url 
+    const urlip = `https://api.ipify.org?format=json`;      // Getting IPV4 address url 
 
     fetch(urlip,{method:'GET'})
     .then((res) => res.json())
     .then((data) => {
-        console.log(data);
+        // console.log(data);
         let userip = data.ip;
         // console.log(userip);
 
@@ -142,19 +143,17 @@ function showData(){
         fetch(geourl,{method:'GET'})
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+            // console.log(data);
             city.innerHTML = `${data.city}`
             region.innerHTML = `${data.region}`
-            org.innerHTML = `${data.org}`
+            org.innerHTML = `${data.org.slice(15)}`
             hostname.innerHTML = `${data.country}`
-           
-
 
             const userpin = data.postal;
             pincode.innerHTML = `${userpin}`
             timezone.innerHTML = `${data.timezone}`
 
-            let dateObj = new Date()
+            let dateObj = new Date().toLocaleString('en-US', { timeZone: data.timezone });
             datetime.innerHTML = `${dateObj}`;
 
             
@@ -165,14 +164,15 @@ function showData(){
                 fetch(pinUrl,{method:'GET'})
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log(data);
-                    msg.innerHTML = `${data[0].Message}`
-
+                    // console.log(data);
+                    msg.innerHTML = `${data[0].Message}`;
 
                     data[0].PostOffice.forEach((data) => {
                         // console.log(data);
+                        
 
                         const postOfficeDiv = document.createElement("div");
+                        
 
                         postOfficeDiv.innerHTML = `
 
@@ -199,9 +199,6 @@ function showData(){
                         `
 
                         container.appendChild(postOfficeDiv);
-
-                       
-
 
 
 
