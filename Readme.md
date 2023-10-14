@@ -1,25 +1,25 @@
 # DOM Test - User Location Details
 
-# 1. Introduction
+## 1. Introduction
 
 This project is designed to fetch user location details, including the IP address, and display them on a webpage. Additionally, it utilizes the user's pin code to retrieve a list of nearby post offices and display them on the page. The project also includes the ability to filter post offices by name and branch office. The total marks for this project are 100.
 
-# 2. Project Setup
+## 2. Project Setup
 
 To set up the project, follow these steps:
 - Clone the GitHub repository.
 - Open the project in your preferred code editor.
 - Ensure you have a working internet connection for API calls.
 
-# 3. HTML Structure
+## 3. HTML Structure
 
 The HTML structure follows the design provided in the Figma design link: [Figma Design](https://www.figma.com/file/TEeaW2ghQCO1LYE4M8EAnd/Untitled-(Copy)?node-id=0%3A1&t=E9q3sWwThzuTXaWJ-0).
 
-# 4. Styling (CSS)
+## 4. Styling (CSS)
 
 The CSS styles have been implemented to match the design in the Figma link, providing a visually pleasing and user-friendly interface.
 
-# 5. JavaScript
+## 5. JavaScript
 
 ### Getting the User's IP Address
 
@@ -76,6 +76,6 @@ The CSS styles have been implemented to match the design in the Figma link, prov
 
 The README file should contain important project information, including installation instructions, usage guidelines, and any additional notes related to the project. Make sure to include screenshots if necessary.
 
-## Project Live Link -: 
+## 11. Project Live Link -: 
 
 <a href="https://mrrushikesh.github.io/Rushikesh_Ingale_DOM_test_14th_Oct_2023/" alt="Lading">Click Here</a>
