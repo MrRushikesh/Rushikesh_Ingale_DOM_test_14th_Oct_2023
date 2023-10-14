@@ -146,7 +146,7 @@ function showData(){
             // console.log(data);
             city.innerHTML = `${data.city}`
             region.innerHTML = `${data.region}`
-            org.innerHTML = `${data.org.slice(15)}`
+            org.innerHTML = `${data.org}`
             hostname.innerHTML = `${data.country}`
 
             const userpin = data.postal;
@@ -158,7 +158,6 @@ function showData(){
 
             
             const pinUrl = `https://api.postalpincode.in/pincode/${userpin}`;
-
             // const pinUrl = `https://api.postalpincode.in/pincode/444006`;
             
                 fetch(pinUrl,{method:'GET'})
@@ -170,9 +169,7 @@ function showData(){
                     data[0].PostOffice.forEach((data) => {
                         // console.log(data);
                         
-
-                        const postOfficeDiv = document.createElement("div");
-                        
+                        const postOfficeDiv = document.createElement("div");   
 
                         postOfficeDiv.innerHTML = `
 
@@ -200,30 +197,17 @@ function showData(){
 
                         container.appendChild(postOfficeDiv);
 
-
-
-
-
-
                     })
-
-
-
-
                    
                 })
 
+
         })
 
-
     })
-
-
-
-       
 
 }
 
 
 
-// 
+ 
